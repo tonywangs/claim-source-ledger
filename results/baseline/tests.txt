@@ -1,0 +1,62 @@
+$ /usr/bin/python3 -m unittest discover -s tests -v
+test_offline_installed_cli (test_ledger.InstalledWorkflow.test_offline_installed_cli) ... ok
+test_atomic_failures_and_collisions (test_ledger.LedgerTests.test_atomic_failures_and_collisions) ... ok
+test_audit_corruptions (test_ledger.LedgerTests.test_audit_corruptions) ... ok
+test_bounded_repeated_passage_and_nonregular_input (test_ledger.LedgerTests.test_bounded_repeated_passage_and_nonregular_input) ... ok
+test_hostile_report (test_ledger.LedgerTests.test_hostile_report) ... ok
+test_killed_writer_keeps_valid_ledger (test_ledger.LedgerTests.test_killed_writer_keeps_valid_ledger) ... ok
+test_limits (test_ledger.LedgerTests.test_limits) ... ok
+test_malformed_schema (test_ledger.LedgerTests.test_malformed_schema) ... ok
+test_overlapping_and_ambiguous (test_ledger.LedgerTests.test_overlapping_and_ambiguous) ... ok
+test_seeded_independent_oracle (test_ledger.LedgerTests.test_seeded_independent_oracle)
+Brute-force tuple windows, not production str.find or classify. ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.058s
+
+OK
+
+$ node tests/browser.cjs
+{"browser":"141.0.7390.37","scenarios":["search and reset","combined source filters","keyboard shortcuts","citation navigation and return","context expansion","skip link","390px viewport","hostile imported text","JavaScript-disabled reading"],"http_requests":0,"hostile_script_executions":0,"report_bytes":7869}
+
+$ /usr/bin/python3 scripts/benchmark.py
+{
+  "environment": {
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "ledger_bytes": 207201,
+  "peak_process_rss_bytes": 20893696,
+  "report_bytes": 246377,
+  "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
+  "timing_seconds": {
+    "authoring": 5.874598227906972,
+    "load_and_audit": 0.03872494515962899,
+    "render": 0.03667068504728377,
+    "total": 6.0144814690575
+  },
+  "workload": {
+    "citations": 128,
+    "claims": 128,
+    "records_per_source": 80,
+    "seed": 42051,
+    "sources": 16
+  }
+}
+
+$ /usr/bin/python3 scripts/example.py /tmp/tmpmtbwpa75/example
+/tmp/tmpmtbwpa75/example/example.html
+
+$ /usr/bin/python3 -m claimledger --ledger /tmp/tmpmtbwpa75/example/example.json audit
+{
+  "issues": [
+    {
+      "code": "claim_without_evidence",
+      "id": "unverified",
+      "severity": "warning"
+    }
+  ],
+  "ok": true,
+  "version": 1
+}

@@ -116,7 +116,7 @@ def audit(data):
             issue('dangling_source', ident)
         else:
             text = sources[c['source']]['text']
-            if text[c['start']:c['end']] != c['quote']:
+            if c['end'] > len(text) or text[c['start']:c['end']] != c['quote']:
                 issue('excerpt_mismatch', ident)
             if (text[max(0,c['start']-len(c['prefix'])):c['start']] != c['prefix']
                     or text[c['end']:c['end']+len(c['suffix'])] != c['suffix']):

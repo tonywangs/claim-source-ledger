@@ -9,10 +9,10 @@
   "report_bytes": 246377,
   "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
   "timing_seconds": {
-    "authoring": 5.934354451019317,
-    "load_and_audit": 0.032456013141199946,
-    "render": 0.04191744583658874,
-    "total": 6.058212599949911
+    "authoring": 5.874598227906972,
+    "load_and_audit": 0.03872494515962899,
+    "render": 0.03667068504728377,
+    "total": 6.0144814690575
   },
   "workload": {
     "citations": 128,

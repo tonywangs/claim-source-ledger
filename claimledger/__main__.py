@@ -2,7 +2,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from . import core
+from . import core, archive
 from .report import render
 
 def parser():
@@ -29,10 +29,26 @@ def parser():
     reloc.add_argument('id'); reloc.add_argument('citation'); reloc.add_argument('target')
     report = sub.add_parser('report')
     report.add_argument('output', type=Path)
+    exp = sub.add_parser('export', help='create a deterministic offline archive; never overwrite')
+    exp.add_argument('output', type=Path)
+    check = sub.add_parser('verify', help='verify an archive offline, without restoring it')
+    check.add_argument('archive', type=Path)
+    restore = sub.add_parser('restore', help='restore an archive into a new directory (Linux)')
+    restore.add_argument('archive', type=Path)
+    restore.add_argument('destination', type=Path)
     return p
 
 def run(a):
     path = a.ledger.absolute()
+    if a.command in ('export', 'verify', 'restore'):
+        if a.command == 'export':
+            result = archive.export(path, a.output)
+        elif a.command == 'verify':
+            result = archive.verify(a.archive)
+        else:
+            result = archive.restore(a.archive, a.destination)
+        print(core.encoded(result).decode(), end='')
+        return 0
     if a.command == 'cleanup':
         with core.locked(path):
             print(core.encoded({'removed':core.cleanup(path)}).decode(), end='')

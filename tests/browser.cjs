@@ -53,6 +53,11 @@ const {execFileSync} = require('node:child_process');
     await page.locator('#citation-q1 summary').focus(); await page.keyboard.press('Enter');
     assert.equal(await page.locator('#citation-q1 mark').isVisible(),true);
     assert.match(await page.locator('#citation-q1 mark').textContent(), /<img/);
+    // Restored revision relationships still navigate to the retained citation.
+    await page.locator('#citation-q3 a[href="#citation-q1"]').focus();
+    await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>document.activeElement.id==='citation-q1');
+    assert.equal(await page.locator('#claim-c1').isVisible(),true);
     // Tab order, skip link, and small viewport layout.
     await page.goto(pathToFileURL(path.join(dir,'browser.html')).href);
     await page.keyboard.press('Tab');
@@ -68,7 +73,7 @@ const {execFileSync} = require('node:child_process');
     await staticPage.goto(pathToFileURL(path.join(dir,'browser.html')).href);
     assert.equal(await staticPage.locator('.claim:visible').count(),3);
     const result={browser:await browser.version(),scenarios:['search and reset','combined source filters',
-      'keyboard shortcuts','citation navigation and return','context expansion','skip link',
+      'keyboard shortcuts','restored revision navigation','citation navigation and return','context expansion','skip link',
       '390px viewport','hostile imported text','JavaScript-disabled reading'],http_requests:requests.length,
       hostile_script_executions:dialogs.length,report_bytes:fs.statSync(path.join(dir,'browser.html')).size};
     console.log(JSON.stringify(result));

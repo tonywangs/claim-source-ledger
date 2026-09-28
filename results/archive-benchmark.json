@@ -1,0 +1,43 @@
+{
+  "archive": {
+    "archive_bytes": 1354882,
+    "citations": 240,
+    "claims": 120,
+    "expanded_bytes": 1345380,
+    "files": 42,
+    "ok": true,
+    "sha256": "e68c93860298ad557a1259154b9452b43ad4c27fd4f36b1ad3f63f0300788e87",
+    "sources": 40,
+    "version": 1
+  },
+  "byte_identical_reexport": true,
+  "citations": 240,
+  "claims": 120,
+  "elapsed_seconds": 20.97702577104792,
+  "environment": {
+    "archive_format": 1,
+    "libc": [
+      "glibc",
+      "2.39"
+    ],
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "zip_method": "ZIP_STORED"
+  },
+  "independent_records_and_snapshots_equal": true,
+  "ledger_bytes": 741239,
+  "peak_process_rss_bytes": 32018432,
+  "phases": {
+    "export_seconds": 0.27307609212584794,
+    "reexport_seconds": 0.29957298398949206,
+    "report_seconds": 0.10596149391494691,
+    "restore_seconds": 0.46992655098438263,
+    "verify_seconds": 0.2834021570160985
+  },
+  "report_bytes": 767735,
+  "report_sha256": "b76e19251779bad36b3ac4f41b8866270fc56fa71599df1fa068f356f48026d4",
+  "seed": 991827,
+  "setup_seconds": 19.3971305671148,
+  "sources": 40
+}

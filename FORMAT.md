@@ -44,7 +44,7 @@ bibliographic fields are a snapshot, not a link to a mutable filesystem path.
 There is no implicit “latest” snapshot; revision comparison names both IDs.
 
 All listed fields are required, including empty metadata and context fields.
-IDs are globally unique. Offsets are integers (not booleans), `0 <= start < end`,
+IDs are globally unique. Offsets are integers (not booleans), `0 <= start < end <= len(source text)`,
 using half-open Unicode code-point indexing, independent of bytes or UTF-16.
 The quotation must equal `text[start:end]`. Prefix must equal the immediately
 preceding substring of its recorded length; suffix must equal the following
@@ -94,3 +94,7 @@ A future incompatible schema requires a new version and an explicit migration;
 version 1 readers refuse it. JSON is intentionally inspectable but manual editing
 bypasses immutability conventions. Hashes provide error detection, not provenance
 attestation or security against deliberate tampering.
+
+Portable backups use the separate bounded [archive format version 1](ARCHIVE.md).
+The archive carries this complete JSON ledger and exact content-addressed snapshot
+bytes, without changing the ledger schema or revision semantics.

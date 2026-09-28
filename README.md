@@ -4,7 +4,7 @@ A local evidence notebook for researchers who need to answer: **Which exact
 source passage did I cite, and does that citation still match this revision?**
 
 Import UTF-8 files, author claims, attach exact quotations, compare revisions,
-and export an offline HTML report. Source snapshots and original citations remain
+export an offline HTML report, and back up or restore a verified archive. Source snapshots and original citations remain
 in the ledger. Nothing fetches source URLs, calls an inference service, or sends
 research data anywhere.
 
@@ -14,7 +14,8 @@ source quality, or whether the quotation supports the authored claim.
 
 ## Quick start
 
-Requires Python 3.10+ on Linux or macOS (POSIX file locks). No runtime packages.
+Requires Python 3.10+ on Linux or macOS (POSIX file locks). Transactional archive
+restoration currently requires Linux; see [ARCHIVE.md](ARCHIVE.md). No runtime packages.
 From this checkout, `python3 -m claimledger` works immediately. To install a
 standalone executable, without pip or internet access:
 
@@ -56,6 +57,27 @@ python3 scripts/example.py /tmp/claimledger-example
 That command requires a new output directory. The resulting HTML and JSON can be
 read without the checkout. A warning for the deliberately unsupported claim is
 expected.
+
+## Portable backups
+
+Export all records, original citations, revision relationships, and immutable
+snapshots into one deterministic archive:
+
+```sh
+python3 -m claimledger --ledger /tmp/canal-research/evidence.json export /tmp/evidence.zip
+python3 -m claimledger verify /tmp/evidence.zip
+python3 -m claimledger restore /tmp/evidence.zip /tmp/recovered-evidence
+python3 -m claimledger --ledger /tmp/recovered-evidence/ledger.json audit
+python3 -m claimledger --ledger /tmp/recovered-evidence/ledger.json report /tmp/recovered-report.html
+```
+
+Choose absent archive and restore paths. Verification is fully offline and checks
+structure, SHA-256 hashes, references, quotations, and report limits. Restore
+publishes a complete new directory atomically; it never replaces an existing
+ledger. Identical ledger state produces byte-identical archives. Hashes detect
+corruption, not authenticity or factual truth. See [ARCHIVE.md](ARCHIVE.md) for the
+bounded version-1 format, compatibility, backup and recovery instructions, Linux
+restore requirement, and crash/power-loss limits.
 
 ## Revising a source
 
@@ -139,7 +161,8 @@ publishing a new ledger:
 - Each decoded source: at most 512 KiB in original UTF-8 bytes.
 - Ledger file and generated report: each at most 8 MiB, including JSON escaping
   and HTML expansion. A valid large ledger can exceed the report limit; export
-  then fails without creating the output.
+  then fails without creating the output. Archive export and verification also
+  enforce the report limit.
 - At most 1,000 sources, 1,000 claims, and 1,000 citations per ledger.
 - Claims and each bibliographic field: at most 16,384 code points. Titles and
   claims must be nonempty; author, date, and URL may be empty.
@@ -183,20 +206,24 @@ cache or your `PLAYWRIGHT_BROWSERS_PATH`. It never installs missing dependencies
 and fails if browser verification cannot run. Some hosts need Chromium system
 libraries installed by their administrator.
 
-The checks include 480 reproducible cases (seed 728193) against an independent
+The checks include 240 archive round trips (seed 390274), 256 archive bit
+corruptions (seed 83719), restoration failure/collision/cancellation tests, and
+480 reproducible citation cases (seed 728193) against an independent
 brute-force tuple-window oracle, paired corruption cases, Unicode, repeated and
 overlapping passages, CRLF, changed quotations, insertion/removal, conflicting
 identifiers, malformed inputs, documented limits, lock contention, interrupted
 writes, crash cleanup, and an isolated installed executable with socket
 operations blocked. Browser tests block network access and exercise search,
-filters, citations, keyboard controls, hostile imported text, and no-JavaScript
+filters, restored citations and relocation links, keyboard controls, hostile imported text, and no-JavaScript
 reading. A bounded workload records actual runtime, peak Python process RSS,
 file sizes, seed, and environment. These are observations of this machine, not
 capacity guarantees or a benchmark against other products.
 
 Current machine-readable evidence lives in [results/verification.json](results/verification.json),
-[results/benchmark.json](results/benchmark.json), [results/browser.json](results/browser.json),
-and [results/tests.log](results/tests.log). Verification overwrites those files.
+[results/benchmark.json](results/benchmark.json),
+[results/archive-benchmark.json](results/archive-benchmark.json), [results/browser.json](results/browser.json),
+and [results/tests.log](results/tests.log). Verification overwrites those files. The previous milestone evidence is
+preserved in [results/baseline/](results/baseline/).
 For the Python-only checks: `python3 -m unittest discover -s tests -v`.
 
 ## Related work

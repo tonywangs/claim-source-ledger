@@ -1,16 +1,12 @@
 {
-  "archive_round_trips": 240,
-  "archive_seed": 390274,
   "checks": [
     "unit and seeded oracle",
     "isolated installed CLI with socket operations blocked",
-    "network-blocked Chromium on restored report",
-    "240 archive round trips and hostile/failure regressions",
-    "bounded archive workload",
+    "network-blocked Chromium",
     "bounded workload",
     "synthetic CLI example"
   ],
-  "elapsed_seconds": 53.38028393709101,
+  "elapsed_seconds": 14.691784271970391,
   "example_report_bytes": 9431,
   "oracle_cases": 480,
   "oracle_seed": 728193,

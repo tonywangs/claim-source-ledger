@@ -1,4 +1,17 @@
 $ /usr/bin/python3 -m unittest discover -s tests -v
+test_corruption_and_allowlist (test_archive.ArchiveTests.test_corruption_and_allowlist) ... ok
+test_directory_preflight_precedes_zip_parser (test_archive.ArchiveTests.test_directory_preflight_precedes_zip_parser) ... ok
+test_export_coordination_and_collisions (test_archive.ArchiveTests.test_export_coordination_and_collisions) ... ok
+test_kill_before_and_after_commit (test_archive.ArchiveTests.test_kill_before_and_after_commit) ... ok
+test_limits (test_archive.ArchiveTests.test_limits) ... ok
+test_manifest_and_ledger_validation (test_archive.ArchiveTests.test_manifest_and_ledger_validation) ... ok
+test_past_end_offset_is_not_a_valid_excerpt (test_archive.ArchiveTests.test_past_end_offset_is_not_a_valid_excerpt) ... ok
+test_restore_failures_cancellation_and_collision (test_archive.ArchiveTests.test_restore_failures_cancellation_and_collision) ... ok
+test_seeded_round_trips (test_archive.ArchiveTests.test_seeded_round_trips) ... ok
+test_seeded_single_bit_corruption (test_archive.ArchiveTests.test_seeded_single_bit_corruption) ... ok
+test_zip_structure (test_archive.ArchiveTests.test_zip_structure) ... /usr/lib/python3.12/zipfile/__init__.py:1620: UserWarning: Duplicate name: 'ledger.json'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
 test_offline_installed_cli (test_ledger.InstalledWorkflow.test_offline_installed_cli) ... ok
 test_atomic_failures_and_collisions (test_ledger.LedgerTests.test_atomic_failures_and_collisions) ... ok
 test_audit_corruptions (test_ledger.LedgerTests.test_audit_corruptions) ... ok
@@ -12,12 +25,12 @@ test_seeded_independent_oracle (test_ledger.LedgerTests.test_seeded_independent_
 Brute-force tuple windows, not production str.find or classify. ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 4.058s
+Ran 21 tests in 21.782s
 
 OK
 
 $ node tests/browser.cjs
-{"browser":"141.0.7390.37","scenarios":["search and reset","combined source filters","keyboard shortcuts","citation navigation and return","context expansion","skip link","390px viewport","hostile imported text","JavaScript-disabled reading"],"http_requests":0,"hostile_script_executions":0,"report_bytes":7869}
+{"browser":"141.0.7390.37","scenarios":["search and reset","combined source filters","keyboard shortcuts","restored revision navigation","citation navigation and return","context expansion","skip link","390px viewport","hostile imported text","JavaScript-disabled reading"],"http_requests":0,"hostile_script_executions":0,"report_bytes":9212}
 
 $ /usr/bin/python3 scripts/benchmark.py
 {
@@ -31,10 +44,10 @@ $ /usr/bin/python3 scripts/benchmark.py
   "report_bytes": 246377,
   "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
   "timing_seconds": {
-    "authoring": 5.874598227906972,
-    "load_and_audit": 0.03872494515962899,
-    "render": 0.03667068504728377,
-    "total": 6.0144814690575
+    "authoring": 5.934354451019317,
+    "load_and_audit": 0.032456013141199946,
+    "render": 0.04191744583658874,
+    "total": 6.058212599949911
   },
   "workload": {
     "citations": 128,
@@ -45,10 +58,55 @@ $ /usr/bin/python3 scripts/benchmark.py
   }
 }
 
-$ /usr/bin/python3 scripts/example.py /tmp/tmpmtbwpa75/example
-/tmp/tmpmtbwpa75/example/example.html
+$ /usr/bin/python3 scripts/archive_benchmark.py
+{
+  "archive": {
+    "archive_bytes": 1354882,
+    "citations": 240,
+    "claims": 120,
+    "expanded_bytes": 1345380,
+    "files": 42,
+    "ok": true,
+    "sha256": "e68c93860298ad557a1259154b9452b43ad4c27fd4f36b1ad3f63f0300788e87",
+    "sources": 40,
+    "version": 1
+  },
+  "byte_identical_reexport": true,
+  "citations": 240,
+  "claims": 120,
+  "elapsed_seconds": 20.97702577104792,
+  "environment": {
+    "archive_format": 1,
+    "libc": [
+      "glibc",
+      "2.39"
+    ],
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "zip_method": "ZIP_STORED"
+  },
+  "independent_records_and_snapshots_equal": true,
+  "ledger_bytes": 741239,
+  "peak_process_rss_bytes": 32018432,
+  "phases": {
+    "export_seconds": 0.27307609212584794,
+    "reexport_seconds": 0.29957298398949206,
+    "report_seconds": 0.10596149391494691,
+    "restore_seconds": 0.46992655098438263,
+    "verify_seconds": 0.2834021570160985
+  },
+  "report_bytes": 767735,
+  "report_sha256": "b76e19251779bad36b3ac4f41b8866270fc56fa71599df1fa068f356f48026d4",
+  "seed": 991827,
+  "setup_seconds": 19.3971305671148,
+  "sources": 40
+}
 
-$ /usr/bin/python3 -m claimledger --ledger /tmp/tmpmtbwpa75/example/example.json audit
+$ /usr/bin/python3 scripts/example.py /tmp/tmp7uco4w56/example
+/tmp/tmp7uco4w56/example/example.html
+
+$ /usr/bin/python3 -m claimledger --ledger /tmp/tmp7uco4w56/example/example.json audit
 {
   "issues": [
     {
