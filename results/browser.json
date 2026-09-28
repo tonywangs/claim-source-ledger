@@ -1,0 +1,17 @@
+{
+  "browser": "141.0.7390.37",
+  "hostile_script_executions": 0,
+  "http_requests": 0,
+  "report_bytes": 7869,
+  "scenarios": [
+    "search and reset",
+    "combined source filters",
+    "keyboard shortcuts",
+    "citation navigation and return",
+    "context expansion",
+    "skip link",
+    "390px viewport",
+    "hostile imported text",
+    "JavaScript-disabled reading"
+  ]
+}

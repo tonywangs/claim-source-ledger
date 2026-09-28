@@ -1,0 +1,24 @@
+{
+  "environment": {
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "ledger_bytes": 207201,
+  "peak_process_rss_bytes": 20893696,
+  "report_bytes": 246377,
+  "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
+  "timing_seconds": {
+    "authoring": 5.874598227906972,
+    "load_and_audit": 0.03872494515962899,
+    "render": 0.03667068504728377,
+    "total": 6.0144814690575
+  },
+  "workload": {
+    "citations": 128,
+    "claims": 128,
+    "records_per_source": 80,
+    "seed": 42051,
+    "sources": 16
+  }
+}

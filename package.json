@@ -1,0 +1,1 @@
+{"name":"claim-source-ledger-verification","private":true,"scripts":{"test:browser":"node tests/browser.cjs"},"devDependencies":{"playwright":"1.56.1"}}
