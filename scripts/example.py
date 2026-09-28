@@ -25,4 +25,6 @@ cli('import','revision',str(ROOT/'examples/revised-notice.txt'),'--title','Synth
 cli('compare','notice','revision')
 cli('accept','opening-relocated','opening-original','revision')
 cli('report',str(a.output/'example.html'))
+cli('manuscript',str(ROOT/'examples/manuscript.json'),str(a.output/'manuscript'))
 print(a.output/'example.html')
+print(a.output/'manuscript/manuscript.html')

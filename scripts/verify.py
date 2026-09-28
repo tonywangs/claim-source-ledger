@@ -26,11 +26,15 @@ def run(args):
     return p.stdout
 
 # Remove old summary evidence first; a failed rerun must not look successful.
-for name in ('verification.json','benchmark.json','browser.json','archive-benchmark.json'):
+for name in ('verification.json','benchmark.json','browser.json','archive-benchmark.json','manuscript-browser.json','manuscript-benchmark.json'):
     (RESULTS/name).unlink(missing_ok=True)
 run([sys.executable,'-m','unittest','discover','-s','tests','-v'])
 browser=json.loads(run(['node','tests/browser.cjs']))
 (RESULTS/'browser.json').write_text(json.dumps(browser,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+manuscript_browser=json.loads(run(['node','tests/manuscript_browser.cjs']))
+(RESULTS/'manuscript-browser.json').write_text(json.dumps(manuscript_browser,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+manuscript_benchmark=json.loads(run([sys.executable,'scripts/manuscript_benchmark.py']))
+(RESULTS/'manuscript-benchmark.json').write_text(json.dumps(manuscript_benchmark,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 benchmark=json.loads(run([sys.executable,'scripts/benchmark.py']))
 (RESULTS/'benchmark.json').write_text(json.dumps(benchmark,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 archive_benchmark=json.loads(run([sys.executable,'scripts/archive_benchmark.py']))
@@ -43,8 +47,11 @@ with tempfile.TemporaryDirectory() as folder:
     assert audited['issues']==[{'code':'claim_without_evidence','id':'unverified','severity':'warning'}]
     example_bytes=(example/'example.html').stat().st_size
 summary={'passed':True,'elapsed_seconds':time.perf_counter()-started,
-         'oracle_seed':728193,'oracle_cases':480,'archive_seed':390274,'archive_round_trips':240,'example_report_bytes':example_bytes,
-         'checks':['unit and seeded oracle','isolated installed CLI with socket operations blocked',
+         'manuscript_seed':681203,'manuscript_cases':240,'oracle_seed':728193,'oracle_cases':480,'archive_seed':390274,'archive_round_trips':240,'example_report_bytes':example_bytes,
+         'checks':['240 ordered manuscript reference cases and repeated byte-identical builds',
+                   'manuscript failure injection and process-kill commit boundaries',
+                   'network-blocked manuscript Chromium and installed CLI archive restoration',
+                   'bounded manuscript workload', 'unit and seeded oracle','isolated installed CLI with socket operations blocked',
                    'network-blocked Chromium on restored report','240 archive round trips and hostile/failure regressions','bounded archive workload','bounded workload','synthetic CLI example']}
 (RESULTS/'verification.json').write_text(json.dumps(summary,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 print(json.dumps(summary,indent=2))

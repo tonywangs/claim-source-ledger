@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "title": "Marshbridge: a synthetic research note",
+  "sections": [
+    {
+      "heading": "The recorded opening",
+      "claims": [
+        {"id": "opening", "citations": ["opening-original", "opening-relocated"]}
+      ]
+    },
+    {
+      "heading": "A question left open",
+      "claims": [
+        {"id": "unverified", "citations": []}
+      ]
+    }
+  ]
+}

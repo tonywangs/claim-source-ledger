@@ -2,7 +2,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from . import core, archive
+from . import core, archive, manuscript
 from .report import render
 
 def parser():
@@ -36,10 +36,16 @@ def parser():
     restore = sub.add_parser('restore', help='restore an archive into a new directory (Linux)')
     restore.add_argument('archive', type=Path)
     restore.add_argument('destination', type=Path)
+    ms = sub.add_parser("manuscript", help="build an ordered manuscript into a fresh directory (Linux)")
+    ms.add_argument("specification", type=Path)
+    ms.add_argument("destination", type=Path)
     return p
 
 def run(a):
     path = a.ledger.absolute()
+    if a.command == 'manuscript':
+        print(core.encoded(manuscript.export(path, a.specification, a.destination)).decode(), end='')
+        return 0
     if a.command in ('export', 'verify', 'restore'):
         if a.command == 'export':
             result = archive.export(path, a.output)

@@ -2,10 +2,6 @@
   "archive_round_trips": 240,
   "archive_seed": 390274,
   "checks": [
-    "240 ordered manuscript reference cases and repeated byte-identical builds",
-    "manuscript failure injection and process-kill commit boundaries",
-    "network-blocked manuscript Chromium and installed CLI archive restoration",
-    "bounded manuscript workload",
     "unit and seeded oracle",
     "isolated installed CLI with socket operations blocked",
     "network-blocked Chromium on restored report",
@@ -14,10 +10,8 @@
     "bounded workload",
     "synthetic CLI example"
   ],
-  "elapsed_seconds": 66.14398077898659,
+  "elapsed_seconds": 53.38028393709101,
   "example_report_bytes": 9431,
-  "manuscript_cases": 240,
-  "manuscript_seed": 681203,
   "oracle_cases": 480,
   "oracle_seed": 728193,
   "passed": true

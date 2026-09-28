@@ -23,14 +23,108 @@ test_malformed_schema (test_ledger.LedgerTests.test_malformed_schema) ... ok
 test_overlapping_and_ambiguous (test_ledger.LedgerTests.test_overlapping_and_ambiguous) ... ok
 test_seeded_independent_oracle (test_ledger.LedgerTests.test_seeded_independent_oracle)
 Brute-force tuple windows, not production str.find or classify. ... ok
+test_bad_spec_files (test_manuscript.ManuscriptTests.test_bad_spec_files) ... ok
+test_input_lock_and_unchanged_inputs (test_manuscript.ManuscriptTests.test_input_lock_and_unchanged_inputs) ... ok
+test_installed_cli_archive_roundtrip_offline (test_manuscript.ManuscriptTests.test_installed_cli_archive_roundtrip_offline) ... ok
+test_process_kill_at_commit_boundary (test_manuscript.ManuscriptTests.test_process_kill_at_commit_boundary) ... ok
+test_seeded_reference_and_repeatability (test_manuscript.ManuscriptTests.test_seeded_reference_and_repeatability) ... ok
+test_transaction_failures_and_collisions (test_manuscript.ManuscriptTests.test_transaction_failures_and_collisions) ... ok
+test_validation_and_limits (test_manuscript.ManuscriptTests.test_validation_and_limits) ... ok
 
 ----------------------------------------------------------------------
-Ran 21 tests in 21.782s
+Ran 28 tests in 29.571s
 
 OK
 
 $ node tests/browser.cjs
 {"browser":"141.0.7390.37","scenarios":["search and reset","combined source filters","keyboard shortcuts","restored revision navigation","citation navigation and return","context expansion","skip link","390px viewport","hostile imported text","JavaScript-disabled reading"],"http_requests":0,"hostile_script_executions":0,"report_bytes":9212}
+
+$ node tests/manuscript_browser.cjs
+{"browser":"141.0.7390.37","http_requests":0,"hostile_script_executions":0,"scenarios":["ordered claims","explicit uncited labels","skip link","keyboard citation and return","excerpt expansion","snapshot navigation","all fragment targets","390px viewport","hostile markup escaping","JavaScript-disabled reading"]}
+
+$ /usr/bin/python3 scripts/manuscript_benchmark.py
+{
+  "artifacts": {
+    "manifest.json": {
+      "bytes": 222637,
+      "sha256": "e51d7f8645f301923ce5b72a1dc511f1bc231fd60a2b9319aa9a1905519c3c21"
+    },
+    "manuscript.html": {
+      "bytes": 511006,
+      "sha256": "75899ed8afb82030174e351762d40a37c1e6d57f33e7217a5e89969c7f468657"
+    },
+    "manuscript.md": {
+      "bytes": 122853,
+      "sha256": "4ffe1ae0269e207851c5e060d4dd781b171151eea65eb7b4ca1c107751bd842a"
+    },
+    "snapshots/0a8d368f9a6f6f5c79f84511c8fdccd22be785be836689f1e21415d183069985.txt": {
+      "bytes": 22419,
+      "sha256": "0a8d368f9a6f6f5c79f84511c8fdccd22be785be836689f1e21415d183069985"
+    },
+    "snapshots/0f9e74b54c8c8b2184244dec14ec7592f8a67701c027382496d7ecb6cd67f02c.txt": {
+      "bytes": 22419,
+      "sha256": "0f9e74b54c8c8b2184244dec14ec7592f8a67701c027382496d7ecb6cd67f02c"
+    },
+    "snapshots/2218edfe80ad60558de8ffcaecd9f73a796b51970501c4fcf5eb34a65725f30a.txt": {
+      "bytes": 22420,
+      "sha256": "2218edfe80ad60558de8ffcaecd9f73a796b51970501c4fcf5eb34a65725f30a"
+    },
+    "snapshots/4c8dd6c35aba685ed7e21289ee319a6a57692983dfafec8036016563f8a87e09.txt": {
+      "bytes": 22419,
+      "sha256": "4c8dd6c35aba685ed7e21289ee319a6a57692983dfafec8036016563f8a87e09"
+    },
+    "snapshots/50cc0c535c324f9b699c692bb508d94e4a24fd174d5b2eaad944f941bd0527d1.txt": {
+      "bytes": 22419,
+      "sha256": "50cc0c535c324f9b699c692bb508d94e4a24fd174d5b2eaad944f941bd0527d1"
+    },
+    "snapshots/84e62bc268b4fd9369b73414ab35d2a6e1ecaaed74dbabb4b649cf825db16f57.txt": {
+      "bytes": 22420,
+      "sha256": "84e62bc268b4fd9369b73414ab35d2a6e1ecaaed74dbabb4b649cf825db16f57"
+    },
+    "snapshots/85d9727c1033ac0856824902f4320ca4c34397141741278e889166b42044344b.txt": {
+      "bytes": 22419,
+      "sha256": "85d9727c1033ac0856824902f4320ca4c34397141741278e889166b42044344b"
+    },
+    "snapshots/8b1b7d2bd7ecbe1789b14bcb6bee751f5989b2136fb7cf4d7a5e7f1df5e755e7.txt": {
+      "bytes": 22419,
+      "sha256": "8b1b7d2bd7ecbe1789b14bcb6bee751f5989b2136fb7cf4d7a5e7f1df5e755e7"
+    },
+    "snapshots/8e894d9b2f2336fb6a5802189860d22c4806c77ccda42916f918cfa8802b9842.txt": {
+      "bytes": 22419,
+      "sha256": "8e894d9b2f2336fb6a5802189860d22c4806c77ccda42916f918cfa8802b9842"
+    },
+    "snapshots/b2b6af8afbd9e8e5a45b41b92296c7249f1790a3a8ae9c06142be4efa2cccad6.txt": {
+      "bytes": 22419,
+      "sha256": "b2b6af8afbd9e8e5a45b41b92296c7249f1790a3a8ae9c06142be4efa2cccad6"
+    },
+    "snapshots/bb1ff8ee02eb12b17de5743aa346acd24920d80288515f1ae2850fb5c600e534.txt": {
+      "bytes": 22419,
+      "sha256": "bb1ff8ee02eb12b17de5743aa346acd24920d80288515f1ae2850fb5c600e534"
+    },
+    "snapshots/f9d43644a87c73d19219f95676a615668a4273d9a91cf0df21ce22ddaea78675.txt": {
+      "bytes": 22419,
+      "sha256": "f9d43644a87c73d19219f95676a615668a4273d9a91cf0df21ce22ddaea78675"
+    }
+  },
+  "build_seconds": 0.23131043487228453,
+  "environment": {
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "input_bytes": 419383,
+  "output_bytes": 1125526,
+  "peak_process_rss_bytes": 28520448,
+  "repeat_identical": true,
+  "rss_scope": "entire benchmark process, including setup and two builds; Linux ru_maxrss",
+  "setup_seconds": 0.09950084495358169,
+  "total_seconds": 0.5654378680046648,
+  "workload": {
+    "citation_selections": 600,
+    "claims": 300,
+    "sections": 10,
+    "sources": 12
+  }
+}
 
 $ /usr/bin/python3 scripts/benchmark.py
 {
@@ -40,14 +134,14 @@ $ /usr/bin/python3 scripts/benchmark.py
     "python": "3.12.3"
   },
   "ledger_bytes": 207201,
-  "peak_process_rss_bytes": 20893696,
+  "peak_process_rss_bytes": 20889600,
   "report_bytes": 246377,
   "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
   "timing_seconds": {
-    "authoring": 5.934354451019317,
-    "load_and_audit": 0.032456013141199946,
-    "render": 0.04191744583658874,
-    "total": 6.058212599949911
+    "authoring": 5.5591299089137465,
+    "load_and_audit": 0.02936372789554298,
+    "render": 0.02890803595073521,
+    "total": 5.674724128795788
   },
   "workload": {
     "citations": 128,
@@ -74,7 +168,7 @@ $ /usr/bin/python3 scripts/archive_benchmark.py
   "byte_identical_reexport": true,
   "citations": 240,
   "claims": 120,
-  "elapsed_seconds": 20.97702577104792,
+  "elapsed_seconds": 22.283991456963122,
   "environment": {
     "archive_format": 1,
     "libc": [
@@ -88,25 +182,26 @@ $ /usr/bin/python3 scripts/archive_benchmark.py
   },
   "independent_records_and_snapshots_equal": true,
   "ledger_bytes": 741239,
-  "peak_process_rss_bytes": 32018432,
+  "peak_process_rss_bytes": 32038912,
   "phases": {
-    "export_seconds": 0.27307609212584794,
-    "reexport_seconds": 0.29957298398949206,
-    "report_seconds": 0.10596149391494691,
-    "restore_seconds": 0.46992655098438263,
-    "verify_seconds": 0.2834021570160985
+    "export_seconds": 0.29229734907858074,
+    "reexport_seconds": 0.28364300495013595,
+    "report_seconds": 0.10621678689494729,
+    "restore_seconds": 0.47250467212870717,
+    "verify_seconds": 0.26675924309529364
   },
   "report_bytes": 767735,
   "report_sha256": "b76e19251779bad36b3ac4f41b8866270fc56fa71599df1fa068f356f48026d4",
   "seed": 991827,
-  "setup_seconds": 19.3971305671148,
+  "setup_seconds": 20.708628416992724,
   "sources": 40
 }
 
-$ /usr/bin/python3 scripts/example.py /tmp/tmp7uco4w56/example
-/tmp/tmp7uco4w56/example/example.html
+$ /usr/bin/python3 scripts/example.py /tmp/tmpo8g6y22v/example
+/tmp/tmpo8g6y22v/example/example.html
+/tmp/tmpo8g6y22v/example/manuscript/manuscript.html
 
-$ /usr/bin/python3 -m claimledger --ledger /tmp/tmp7uco4w56/example/example.json audit
+$ /usr/bin/python3 -m claimledger --ledger /tmp/tmpo8g6y22v/example/example.json audit
 {
   "issues": [
     {

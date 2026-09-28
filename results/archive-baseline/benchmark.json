@@ -5,14 +5,14 @@
     "python": "3.12.3"
   },
   "ledger_bytes": 207201,
-  "peak_process_rss_bytes": 20889600,
+  "peak_process_rss_bytes": 20893696,
   "report_bytes": 246377,
   "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
   "timing_seconds": {
-    "authoring": 5.5591299089137465,
-    "load_and_audit": 0.02936372789554298,
-    "render": 0.02890803595073521,
-    "total": 5.674724128795788
+    "authoring": 5.934354451019317,
+    "load_and_audit": 0.032456013141199946,
+    "render": 0.04191744583658874,
+    "total": 6.058212599949911
   },
   "workload": {
     "citations": 128,

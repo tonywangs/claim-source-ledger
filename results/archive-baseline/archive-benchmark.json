@@ -13,7 +13,7 @@
   "byte_identical_reexport": true,
   "citations": 240,
   "claims": 120,
-  "elapsed_seconds": 22.283991456963122,
+  "elapsed_seconds": 20.97702577104792,
   "environment": {
     "archive_format": 1,
     "libc": [
@@ -27,17 +27,17 @@
   },
   "independent_records_and_snapshots_equal": true,
   "ledger_bytes": 741239,
-  "peak_process_rss_bytes": 32038912,
+  "peak_process_rss_bytes": 32018432,
   "phases": {
-    "export_seconds": 0.29229734907858074,
-    "reexport_seconds": 0.28364300495013595,
-    "report_seconds": 0.10621678689494729,
-    "restore_seconds": 0.47250467212870717,
-    "verify_seconds": 0.26675924309529364
+    "export_seconds": 0.27307609212584794,
+    "reexport_seconds": 0.29957298398949206,
+    "report_seconds": 0.10596149391494691,
+    "restore_seconds": 0.46992655098438263,
+    "verify_seconds": 0.2834021570160985
   },
   "report_bytes": 767735,
   "report_sha256": "b76e19251779bad36b3ac4f41b8866270fc56fa71599df1fa068f356f48026d4",
   "seed": 991827,
-  "setup_seconds": 20.708628416992724,
+  "setup_seconds": 19.3971305671148,
   "sources": 40
 }

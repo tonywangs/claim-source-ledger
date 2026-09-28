@@ -4,7 +4,8 @@ A local evidence notebook for researchers who need to answer: **Which exact
 source passage did I cite, and does that citation still match this revision?**
 
 Import UTF-8 files, author claims, attach exact quotations, compare revisions,
-export an offline HTML report, and back up or restore a verified archive. Source snapshots and original citations remain
+export an offline HTML report, build an ordered manuscript with verified citations,
+and back up or restore a verified archive. Source snapshots and original citations remain
 in the ledger. Nothing fetches source URLs, calls an inference service, or sends
 research data anywhere.
 
@@ -15,7 +16,7 @@ source quality, or whether the quotation supports the authored claim.
 ## Quick start
 
 Requires Python 3.10+ on Linux or macOS (POSIX file locks). Transactional archive
-restoration currently requires Linux; see [ARCHIVE.md](ARCHIVE.md). No runtime packages.
+restoration and manuscript publication currently require Linux; see [ARCHIVE.md](ARCHIVE.md). No runtime packages.
 From this checkout, `python3 -m claimledger` works immediately. To install a
 standalone executable, without pip or internet access:
 
@@ -57,6 +58,24 @@ python3 scripts/example.py /tmp/claimledger-example
 That command requires a new output directory. The resulting HTML and JSON can be
 read without the checkout. A warning for the deliberately unsupported claim is
 expected.
+
+## Ordered manuscripts
+
+Build Markdown, self-contained HTML, and deterministic provenance from an
+explicit ordering of claims and citations:
+
+```sh
+python3 scripts/example.py /tmp/manuscript-example
+python3 -m claimledger --ledger /tmp/manuscript-example/example.json manuscript \
+  examples/manuscript.json /tmp/manuscript-second-build
+```
+
+The example includes both source revisions and a visibly uncited claim. Open
+`/tmp/manuscript-example/manuscript/manuscript.html`. Each build requires a fresh
+directory and publishes the whole bundle atomically. Exact excerpts, source
+revision IDs, hashes, and full selected snapshots make the citations traceable.
+See [MANUSCRIPT.md](MANUSCRIPT.md) for the complete example, versioned
+specification, limits, transaction boundary, and limitations.
 
 ## Portable backups
 
@@ -206,7 +225,9 @@ cache or your `PLAYWRIGHT_BROWSERS_PATH`. It never installs missing dependencies
 and fails if browser verification cannot run. Some hosts need Chromium system
 libraries installed by their administrator.
 
-The checks include 240 archive round trips (seed 390274), 256 archive bit
+The checks include 240 ordered manuscript reference cases (seed 681203),
+byte-identical builds after archive restoration, manuscript transaction failures,
+and keyboard navigation in network-blocked Chromium; plus 240 archive round trips (seed 390274), 256 archive bit
 corruptions (seed 83719), restoration failure/collision/cancellation tests, and
 480 reproducible citation cases (seed 728193) against an independent
 brute-force tuple-window oracle, paired corruption cases, Unicode, repeated and
@@ -222,8 +243,11 @@ capacity guarantees or a benchmark against other products.
 Current machine-readable evidence lives in [results/verification.json](results/verification.json),
 [results/benchmark.json](results/benchmark.json),
 [results/archive-benchmark.json](results/archive-benchmark.json), [results/browser.json](results/browser.json),
+[results/manuscript-benchmark.json](results/manuscript-benchmark.json),
+[results/manuscript-browser.json](results/manuscript-browser.json),
 and [results/tests.log](results/tests.log). Verification overwrites those files. The previous milestone evidence is
-preserved in [results/baseline/](results/baseline/).
+preserved in [results/baseline/](results/baseline/) and
+[results/archive-baseline/](results/archive-baseline/).
 For the Python-only checks: `python3 -m unittest discover -s tests -v`.
 
 ## Related work
