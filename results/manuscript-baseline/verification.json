@@ -2,10 +2,6 @@
   "archive_round_trips": 240,
   "archive_seed": 390274,
   "checks": [
-    "240 seeded comparison pairs against an independent structural oracle and byte-identical reports",
-    "comparison limits, failure injection, tampering, cancellation and process-kill boundaries",
-    "network-blocked comparison Chromium and isolated installed CLI with archive-restored bundles",
-    "bounded comparison workload and complete restored comparison example",
     "240 ordered manuscript reference cases and repeated byte-identical builds",
     "manuscript failure injection and process-kill commit boundaries",
     "network-blocked manuscript Chromium and installed CLI archive restoration",
@@ -18,9 +14,7 @@
     "bounded workload",
     "synthetic CLI example"
   ],
-  "comparison_pairs": 240,
-  "comparison_seed": 908172,
-  "elapsed_seconds": 103.74175482289866,
+  "elapsed_seconds": 66.14398077898659,
   "example_report_bytes": 9431,
   "manuscript_cases": 240,
   "manuscript_seed": 681203,

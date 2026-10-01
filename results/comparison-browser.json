@@ -1,0 +1,21 @@
+{
+  "browser": "141.0.7390.37",
+  "filter_kinds": 13,
+  "findings": 24,
+  "hostile_script_executions": 0,
+  "http_requests": 0,
+  "scenarios": [
+    "all type filters",
+    "native keyboard filter",
+    "before/after views",
+    "skip link",
+    "keyboard citation navigation",
+    "context expansion",
+    "return to filtered finding",
+    "all fragment targets",
+    "390px viewport",
+    "hostile markup escaping",
+    "script hash CSP",
+    "JavaScript-disabled reading"
+  ]
+}

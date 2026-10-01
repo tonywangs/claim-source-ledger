@@ -1,0 +1,56 @@
+{
+  "artifacts": {
+    "comparison.html": {
+      "bytes": 1469875,
+      "sha256": "1940e3036faa1d39a97d3ce1557a01e08d289a0baff53bd442d9e753539af07f"
+    },
+    "comparison.json": {
+      "bytes": 694439,
+      "sha256": "cef0f7a12ebfccdfc47d1ee603c8cdb25c0fb24768157b2c02ad1749a5da188a"
+    }
+  },
+  "comparison_seconds": 0.6525455862283707,
+  "environment": {
+    "libc": [
+      "glibc",
+      "2.39"
+    ],
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "findings": 1303,
+  "input_bytes": {
+    "after": 954321,
+    "before": 939281
+  },
+  "input_hashes": {
+    "after": "710b883d91db475c25f7738a07bc96aaaf126e24853d1bded5db9e0013108b28",
+    "before": "4d1c540e2768c4a962b235626c49d2029a2b664f09ea613d270597e3754d65b7"
+  },
+  "inputs_unchanged": true,
+  "output_bytes": 2164314,
+  "peak_process_rss_bytes": 38543360,
+  "repeat_identical": true,
+  "rss_scope": "entire process including setup, two manuscript builds, input copies and two comparisons; Linux ru_maxrss",
+  "seed": 441908,
+  "setup_seconds": 0.6005669091828167,
+  "summary": {
+    "claim_order": 1,
+    "claim_text": 100,
+    "excerpt": 300,
+    "placement": 300,
+    "provenance": 1,
+    "sections": 1,
+    "source_evidence": 300,
+    "source_revision": 300
+  },
+  "total_seconds": 2.0003150911070406,
+  "workload": {
+    "citation_selections_per_bundle": 600,
+    "claims_per_bundle": 300,
+    "sections_per_bundle": 10,
+    "sources_per_bundle": 12,
+    "text_changes": 100
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "browser": "141.0.7390.37",
+  "hostile_script_executions": 0,
+  "http_requests": 0,
+  "scenarios": [
+    "ordered claims",
+    "explicit uncited labels",
+    "skip link",
+    "keyboard citation and return",
+    "excerpt expansion",
+    "snapshot navigation",
+    "all fragment targets",
+    "390px viewport",
+    "hostile markup escaping",
+    "JavaScript-disabled reading"
+  ]
+}

@@ -12,16 +12,6 @@ test_seeded_single_bit_corruption (test_archive.ArchiveTests.test_seeded_single_
 test_zip_structure (test_archive.ArchiveTests.test_zip_structure) ... /usr/lib/python3.12/zipfile/__init__.py:1620: UserWarning: Duplicate name: 'ledger.json'
   return self._open_to_write(zinfo, force_zip64=force_zip64)
 ok
-test_installed_cli_archive_restoration (test_comparison.ComparisonTests.test_installed_cli_archive_restoration) ... ok
-test_kill_before_after_commit (test_comparison.ComparisonTests.test_kill_before_after_commit) ... ok
-test_limits_and_failures (test_comparison.ComparisonTests.test_limits_and_failures) ... ok
-test_malformed_and_tampered_bundles (test_comparison.ComparisonTests.test_malformed_and_tampered_bundles) ... ok
-test_mutation_recheck_and_output_exact_limit (test_comparison.ComparisonTests.test_mutation_recheck_and_output_exact_limit) ... ok
-test_omitted_ancestors_and_swapped_evidence (test_comparison.ComparisonTests.test_omitted_ancestors_and_swapped_evidence) ... ok
-test_presentation_bytes_and_citation_rename (test_comparison.ComparisonTests.test_presentation_bytes_and_citation_rename) ... ok
-test_runtime_expiry_during_staging_and_collision_types (test_comparison.ComparisonTests.test_runtime_expiry_during_staging_and_collision_types) ... ok
-test_seeded_reference_pairs_and_repeatability (test_comparison.ComparisonTests.test_seeded_reference_pairs_and_repeatability) ... ok
-test_unicode_offsets_independent_and_semantic_tampering (test_comparison.ComparisonTests.test_unicode_offsets_independent_and_semantic_tampering) ... ok
 test_offline_installed_cli (test_ledger.InstalledWorkflow.test_offline_installed_cli) ... ok
 test_atomic_failures_and_collisions (test_ledger.LedgerTests.test_atomic_failures_and_collisions) ... ok
 test_audit_corruptions (test_ledger.LedgerTests.test_audit_corruptions) ... ok
@@ -42,7 +32,7 @@ test_transaction_failures_and_collisions (test_manuscript.ManuscriptTests.test_t
 test_validation_and_limits (test_manuscript.ManuscriptTests.test_validation_and_limits) ... ok
 
 ----------------------------------------------------------------------
-Ran 38 tests in 60.641s
+Ran 28 tests in 29.571s
 
 OK
 
@@ -51,67 +41,6 @@ $ node tests/browser.cjs
 
 $ node tests/manuscript_browser.cjs
 {"browser":"141.0.7390.37","http_requests":0,"hostile_script_executions":0,"scenarios":["ordered claims","explicit uncited labels","skip link","keyboard citation and return","excerpt expansion","snapshot navigation","all fragment targets","390px viewport","hostile markup escaping","JavaScript-disabled reading"]}
-
-$ node tests/comparison_browser.cjs
-{"browser":"141.0.7390.37","http_requests":0,"hostile_script_executions":0,"findings":24,"filter_kinds":13,"scenarios":["all type filters","native keyboard filter","before/after views","skip link","keyboard citation navigation","context expansion","return to filtered finding","all fragment targets","390px viewport","hostile markup escaping","script hash CSP","JavaScript-disabled reading"]}
-
-$ /usr/bin/python3 scripts/comparison_benchmark.py
-{
-  "artifacts": {
-    "comparison.html": {
-      "bytes": 1469875,
-      "sha256": "1940e3036faa1d39a97d3ce1557a01e08d289a0baff53bd442d9e753539af07f"
-    },
-    "comparison.json": {
-      "bytes": 694439,
-      "sha256": "cef0f7a12ebfccdfc47d1ee603c8cdb25c0fb24768157b2c02ad1749a5da188a"
-    }
-  },
-  "comparison_seconds": 0.6525455862283707,
-  "environment": {
-    "libc": [
-      "glibc",
-      "2.39"
-    ],
-    "machine": "x86_64",
-    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
-    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
-  },
-  "findings": 1303,
-  "input_bytes": {
-    "after": 954321,
-    "before": 939281
-  },
-  "input_hashes": {
-    "after": "710b883d91db475c25f7738a07bc96aaaf126e24853d1bded5db9e0013108b28",
-    "before": "4d1c540e2768c4a962b235626c49d2029a2b664f09ea613d270597e3754d65b7"
-  },
-  "inputs_unchanged": true,
-  "output_bytes": 2164314,
-  "peak_process_rss_bytes": 38543360,
-  "repeat_identical": true,
-  "rss_scope": "entire process including setup, two manuscript builds, input copies and two comparisons; Linux ru_maxrss",
-  "seed": 441908,
-  "setup_seconds": 0.6005669091828167,
-  "summary": {
-    "claim_order": 1,
-    "claim_text": 100,
-    "excerpt": 300,
-    "placement": 300,
-    "provenance": 1,
-    "sections": 1,
-    "source_evidence": 300,
-    "source_revision": 300
-  },
-  "total_seconds": 2.0003150911070406,
-  "workload": {
-    "citation_selections_per_bundle": 600,
-    "claims_per_bundle": 300,
-    "sections_per_bundle": 10,
-    "sources_per_bundle": 12,
-    "text_changes": 100
-  }
-}
 
 $ /usr/bin/python3 scripts/manuscript_benchmark.py
 {
@@ -177,18 +106,18 @@ $ /usr/bin/python3 scripts/manuscript_benchmark.py
       "sha256": "f9d43644a87c73d19219f95676a615668a4273d9a91cf0df21ce22ddaea78675"
     }
   },
-  "build_seconds": 0.2231069579720497,
+  "build_seconds": 0.23131043487228453,
   "environment": {
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
   },
   "input_bytes": 419383,
   "output_bytes": 1125526,
-  "peak_process_rss_bytes": 28651520,
+  "peak_process_rss_bytes": 28520448,
   "repeat_identical": true,
   "rss_scope": "entire benchmark process, including setup and two builds; Linux ru_maxrss",
-  "setup_seconds": 0.12393211107701063,
-  "total_seconds": 0.6194532900117338,
+  "setup_seconds": 0.09950084495358169,
+  "total_seconds": 0.5654378680046648,
   "workload": {
     "citation_selections": 600,
     "claims": 300,
@@ -205,14 +134,14 @@ $ /usr/bin/python3 scripts/benchmark.py
     "python": "3.12.3"
   },
   "ledger_bytes": 207201,
-  "peak_process_rss_bytes": 20852736,
+  "peak_process_rss_bytes": 20889600,
   "report_bytes": 246377,
   "scope": "One fresh Python process, in-process authoring with validation after every append; RSS includes interpreter. Installed CLI and browser tested separately.",
   "timing_seconds": {
-    "authoring": 6.219588049221784,
-    "load_and_audit": 0.03728041984140873,
-    "render": 0.032643324695527554,
-    "total": 6.346291815396398
+    "authoring": 5.5591299089137465,
+    "load_and_audit": 0.02936372789554298,
+    "render": 0.02890803595073521,
+    "total": 5.674724128795788
   },
   "workload": {
     "citations": 128,
@@ -239,7 +168,7 @@ $ /usr/bin/python3 scripts/archive_benchmark.py
   "byte_identical_reexport": true,
   "citations": 240,
   "claims": 120,
-  "elapsed_seconds": 20.850449215155095,
+  "elapsed_seconds": 22.283991456963122,
   "environment": {
     "archive_format": 1,
     "libc": [
@@ -253,26 +182,26 @@ $ /usr/bin/python3 scripts/archive_benchmark.py
   },
   "independent_records_and_snapshots_equal": true,
   "ledger_bytes": 741239,
-  "peak_process_rss_bytes": 32014336,
+  "peak_process_rss_bytes": 32038912,
   "phases": {
-    "export_seconds": 0.2654750728979707,
-    "reexport_seconds": 0.3051884421147406,
-    "report_seconds": 0.11679779272526503,
-    "restore_seconds": 0.7235051640309393,
-    "verify_seconds": 0.2719587660394609
+    "export_seconds": 0.29229734907858074,
+    "reexport_seconds": 0.28364300495013595,
+    "report_seconds": 0.10621678689494729,
+    "restore_seconds": 0.47250467212870717,
+    "verify_seconds": 0.26675924309529364
   },
   "report_bytes": 767735,
   "report_sha256": "b76e19251779bad36b3ac4f41b8866270fc56fa71599df1fa068f356f48026d4",
   "seed": 991827,
-  "setup_seconds": 18.9974428829737,
+  "setup_seconds": 20.708628416992724,
   "sources": 40
 }
 
-$ /usr/bin/python3 scripts/example.py /tmp/tmp_m55h4xs/example
-/tmp/tmp_m55h4xs/example/example.html
-/tmp/tmp_m55h4xs/example/manuscript/manuscript.html
+$ /usr/bin/python3 scripts/example.py /tmp/tmpo8g6y22v/example
+/tmp/tmpo8g6y22v/example/example.html
+/tmp/tmpo8g6y22v/example/manuscript/manuscript.html
 
-$ /usr/bin/python3 -m claimledger --ledger /tmp/tmp_m55h4xs/example/example.json audit
+$ /usr/bin/python3 -m claimledger --ledger /tmp/tmpo8g6y22v/example/example.json audit
 {
   "issues": [
     {
@@ -284,6 +213,3 @@ $ /usr/bin/python3 -m claimledger --ledger /tmp/tmp_m55h4xs/example/example.json
   "ok": true,
   "version": 1
 }
-
-$ /usr/bin/python3 scripts/comparison_example.py /tmp/tmp_m55h4xs/comparison-example
-/tmp/tmp_m55h4xs/comparison-example/comparison/comparison.html

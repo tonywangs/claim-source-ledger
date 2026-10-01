@@ -61,18 +61,18 @@
       "sha256": "f9d43644a87c73d19219f95676a615668a4273d9a91cf0df21ce22ddaea78675"
     }
   },
-  "build_seconds": 0.2231069579720497,
+  "build_seconds": 0.23131043487228453,
   "environment": {
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
   },
   "input_bytes": 419383,
   "output_bytes": 1125526,
-  "peak_process_rss_bytes": 28651520,
+  "peak_process_rss_bytes": 28520448,
   "repeat_identical": true,
   "rss_scope": "entire benchmark process, including setup and two builds; Linux ru_maxrss",
-  "setup_seconds": 0.12393211107701063,
-  "total_seconds": 0.6194532900117338,
+  "setup_seconds": 0.09950084495358169,
+  "total_seconds": 0.5654378680046648,
   "workload": {
     "citation_selections": 600,
     "claims": 300,

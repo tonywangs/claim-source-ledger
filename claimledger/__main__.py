@@ -2,7 +2,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from . import core, archive, manuscript
+from . import core, archive, manuscript, comparison
 from .report import render
 
 def parser():
@@ -39,9 +39,18 @@ def parser():
     ms = sub.add_parser("manuscript", help="build an ordered manuscript into a fresh directory (Linux)")
     ms.add_argument("specification", type=Path)
     ms.add_argument("destination", type=Path)
+    diff = sub.add_parser('manuscript-compare', help='compare two saved manuscript bundles offline into a fresh directory')
+    diff.add_argument('before', type=Path)
+    diff.add_argument('after', type=Path)
+    diff.add_argument('destination', type=Path)
+    diff.add_argument('--seconds', type=float, default=comparison.MAX_SECONDS)
+    diff.add_argument('--work', type=int, default=comparison.MAX_WORK)
     return p
 
 def run(a):
+    if a.command == 'manuscript-compare':
+        print(core.encoded(comparison.export(a.before, a.after, a.destination, a.seconds, a.work)).decode(), end='')
+        return 0
     path = a.ledger.absolute()
     if a.command == 'manuscript':
         print(core.encoded(manuscript.export(path, a.specification, a.destination)).decode(), end='')

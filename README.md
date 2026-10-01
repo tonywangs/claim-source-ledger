@@ -5,7 +5,7 @@ source passage did I cite, and does that citation still match this revision?**
 
 Import UTF-8 files, author claims, attach exact quotations, compare revisions,
 export an offline HTML report, build an ordered manuscript with verified citations,
-and back up or restore a verified archive. Source snapshots and original citations remain
+compare saved manuscript bundles, and back up or restore a verified archive. Source snapshots and original citations remain
 in the ledger. Nothing fetches source URLs, calls an inference service, or sends
 research data anywhere.
 
@@ -16,7 +16,7 @@ source quality, or whether the quotation supports the authored claim.
 ## Quick start
 
 Requires Python 3.10+ on Linux or macOS (POSIX file locks). Transactional archive
-restoration and manuscript publication currently require Linux; see [ARCHIVE.md](ARCHIVE.md). No runtime packages.
+restoration, manuscript publication, and comparison publication currently require Linux; see [ARCHIVE.md](ARCHIVE.md). No runtime packages.
 From this checkout, `python3 -m claimledger` works immediately. To install a
 standalone executable, without pip or internet access:
 
@@ -76,6 +76,25 @@ directory and publishes the whole bundle atomically. Exact excerpts, source
 revision IDs, hashes, and full selected snapshots make the citations traceable.
 See [MANUSCRIPT.md](MANUSCRIPT.md) for the complete example, versioned
 specification, limits, transaction boundary, and limitations.
+
+## Comparing saved manuscripts
+
+Compare authored text, ordering, citation selections, and source evidence in two
+saved bundles without the original ledger:
+
+```sh
+python3 scripts/comparison_example.py /tmp/claim-comparison-example
+python3 -m claimledger manuscript-compare \
+  /tmp/claim-comparison-example/before /tmp/claim-comparison-example/after \
+  /tmp/claim-comparison-example/another-comparison
+```
+
+Open `another-comparison/comparison.html` for filters, before/after views, and
+linked excerpts. `comparison.json` records deterministic findings and exact input
+hashes. Claim IDs assert identity; repeated occurrences are compared as ordered
+groups with explicit ambiguity. Absence is relative only to these bundles.
+See [COMPARISON.md](COMPARISON.md) for versioned semantics, validation, limits,
+archive restoration, measurements, and compatibility/accessibility limitations.
 
 ## Portable backups
 
@@ -225,7 +244,11 @@ cache or your `PLAYWRIGHT_BROWSERS_PATH`. It never installs missing dependencies
 and fails if browser verification cannot run. Some hosts need Chromium system
 libraries installed by their administrator.
 
-The checks include 240 ordered manuscript reference cases (seed 681203),
+The checks include 240 seeded manuscript bundle comparisons (seed 908172) against
+an independent structural oracle, comparison failure/limit/tampering checks,
+installed-CLI comparison after archive restoration, and all comparison filters
+and before/after views in network-blocked Chromium; plus 240 ordered manuscript
+reference cases (seed 681203),
 byte-identical builds after archive restoration, manuscript transaction failures,
 and keyboard navigation in network-blocked Chromium; plus 240 archive round trips (seed 390274), 256 archive bit
 corruptions (seed 83719), restoration failure/collision/cancellation tests, and
@@ -245,9 +268,12 @@ Current machine-readable evidence lives in [results/verification.json](results/v
 [results/archive-benchmark.json](results/archive-benchmark.json), [results/browser.json](results/browser.json),
 [results/manuscript-benchmark.json](results/manuscript-benchmark.json),
 [results/manuscript-browser.json](results/manuscript-browser.json),
+[results/comparison-benchmark.json](results/comparison-benchmark.json),
+[results/comparison-browser.json](results/comparison-browser.json),
 and [results/tests.log](results/tests.log). Verification overwrites those files. The previous milestone evidence is
 preserved in [results/baseline/](results/baseline/) and
-[results/archive-baseline/](results/archive-baseline/).
+[results/archive-baseline/](results/archive-baseline/), and
+[results/manuscript-baseline/](results/manuscript-baseline/).
 For the Python-only checks: `python3 -m unittest discover -s tests -v`.
 
 ## Related work
