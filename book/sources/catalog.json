@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "russell",
+      "title": "The Atlantic Telegraph (1865)",
+      "author": "William Howard Russell",
+      "date": "1865",
+      "url": "https://www.gutenberg.org/ebooks/40948",
+      "edition": "Project Gutenberg no. 40948; transcription of a Naval Institute Press reprint of the 1865 work. The reprint front matter is retained in the raw HTML.",
+      "role": "Eyewitness narrative for the 1865 voyage; retrospective account of 1854–1858; includes company and technical documents.",
+      "transformation": "scripts/book_sources.py extracts text from printed page 1 onward, preserving printed-page markers and collapsing whitespace. Image captions are retained, images are not included.",
+      "raw": [
+        {
+          "path": "raw/russell.html",
+          "url": "https://www.gutenberg.org/files/40948/40948-h/40948-h.htm",
+          "bytes": 381748,
+          "sha256": "1e7ab6035e95469e9ca723f2f68612af4d67e1ff4c2b2953830f7779f611aefa"
+        }
+      ],
+      "accessed": "2026-10-19",
+      "snapshot": "russell.txt",
+      "rights": "Historical work is public domain in the United States; digital-provider notices remain in retained raw inputs where present.",
+      "sha256": "938091c4bc91a69128f3a53bf11a5e5e6ca527306b780a09fdbcc23258e0ec8f"
+    },
+    {
+      "id": "banquet",
+      "title": "The Atlantic Telegraph: Report of the Proceedings at a Banquet Given to Mr. Cyrus W. Field",
+      "author": "Chamber of Commerce of New-York; speech by Cyrus W. Field",
+      "date": "1866-11-15",
+      "url": "https://archive.org/details/atlantictelegrap00newyrich",
+      "edition": "New York: John W. Amerman, printer. Banquet at the Metropolitan Hotel, 15 November 1866. Internet Archive scan and OCR.",
+      "role": "Participant speech after the successful expeditions. Celebration and self-justification are part of the source; it is not an independent engineering audit.",
+      "transformation": "scripts/book_sources.py collapses whitespace in the retained OCR. OCR spelling and split words are not silently corrected; compare the retained PDF, printed page N = PDF page N+6 for the speech (e.g. p.30 = PDF page36).",
+      "raw": [
+        {
+          "path": "raw/banquet.txt",
+          "url": "https://archive.org/download/atlantictelegrap00newyrich/atlantictelegrap00newyrich_djvu.txt",
+          "bytes": 185331,
+          "sha256": "6ecbee8b7803e9de5f8b677c0d4e1e7c1f4f60030a73bc74fefae201b1df6055"
+        },
+        {
+          "path": "raw/banquet.pdf",
+          "url": "https://archive.org/download/atlantictelegrap00newyrich/atlantictelegrap00newyrich.pdf",
+          "bytes": 6837872,
+          "sha256": "13c253bce06532a3c0e59e5c691fecddd7014b5023cbe185a60d698bf8fb18bd"
+        }
+      ],
+      "accessed": "2026-10-19",
+      "snapshot": "banquet.txt",
+      "rights": "Historical work is public domain in the United States; digital-provider notices remain in retained raw inputs where present.",
+      "sha256": "9256c050faed3b57d75ec4a9f3b3d2e8643cec85b9d232ec425ffa4a19cb54bb"
+    },
+    {
+      "id": "field-landing",
+      "title": "History of the Atlantic Telegraph, selected passage",
+      "author": "Henry M. Field",
+      "date": "1866",
+      "url": "https://archive.org/details/historyatlantic04fielgoog",
+      "edition": "1866 volume, printed p.361; Internet Archive / Google scan. Only the cited page is retained as a PDF shard.",
+      "role": "Contemporary history by Cyrus Field’s brother, reproducing Cyrus’s landing telegram. This is a mediated report, not the original telegram or an independent witness.",
+      "transformation": "Manual transcription of the final paragraph on p.361; line-end hyphens joined, quotation marks and dash spacing normalized. Ends at the page boundary. Facsimile shard made with PyMuPDF 1.26.5: source PDF page index363, zero-based.",
+      "raw": [
+        {
+          "path": "raw/field-history-p361.pdf",
+          "url": "https://archive.org/download/historyatlantic04fielgoog/historyatlantic04fielgoog.pdf",
+          "bytes": 54805,
+          "sha256": "93bc08051ef760534e78c87b9afce804bcbba12fba90c24b149eb0147b0908f2"
+        }
+      ],
+      "accessed": "2026-10-19",
+      "snapshot": "field-landing.txt",
+      "rights": "Historical work is public domain in the United States; digital-provider notices remain in retained raw inputs where present.",
+      "sha256": "a80baa5c5171c34fb9c8eb673ceccc99cc0f2fccd7491b3ee96f00c9db3b115a",
+      "downloaded_original": {
+        "bytes": 9689019,
+        "sha256": "d54ad549c162855ce6ac00365f5e073484f084a3dbddf3dc2db5469ad958a5aa",
+        "retention": "Selected page retained; complete download not required for offline builds."
+      }
+    },
+    {
+      "id": "times",
+      "title": "The Times and General Commercial Gazette: Telegrams and Postscript",
+      "author": "The Times and General Commercial Gazette (St. John’s, Newfoundland)",
+      "date": "1866-08-01",
+      "url": "https://dai.mun.ca/pdfs/timesgeneral/TimesAndGeneralCommercialGazette18660801.pdf",
+      "edition": "Memorial University Digital Archives Initiative scan; scan page3, second full column. Items dated Heart’s Content, July29 and July31.",
+      "role": "Local newspaper publication close to the event; the Postscript is attributed to Cyrus Field and is not independent authorship of his telegram.",
+      "transformation": "Manual selected-item transcription, not full OCR. Line-end hyphens joined, quotation marks/dash spacing normalized; italic emphasis omitted. Facsimile shard made with PyMuPDF 1.26.5: source PDF page index2, zero-based.",
+      "raw": [
+        {
+          "path": "raw/times-1866-08-01-p3.pdf",
+          "url": "https://dai.mun.ca/pdfs/timesgeneral/TimesAndGeneralCommercialGazette18660801.pdf",
+          "bytes": 3300805,
+          "sha256": "ebad112f4ec54069144243dd9e05939f2e640dc11b9cf7407062dbfafbf1a58d"
+        }
+      ],
+      "accessed": "2026-10-19",
+      "snapshot": "times.txt",
+      "rights": "Historical work is public domain in the United States; digital-provider notices remain in retained raw inputs where present.",
+      "sha256": "13488b5a95fb5f09f5dcc4955a3be6417e9e4c30abcc39351dc863968046c825",
+      "downloaded_original": {
+        "bytes": 12806512,
+        "sha256": "97604d6d6afc6776e857478b140794d6cff712111a31c50eb229d9f18b295a1d",
+        "retention": "Selected page retained; complete download not required for offline builds."
+      }
+    }
+  ]
+}

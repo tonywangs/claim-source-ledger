@@ -1,0 +1,46 @@
+:root{color-scheme:light;--ink:#20343b;--sea:#1c6268;--muted:#50636a;--paper:#fffdf8}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--paper);color:var(--ink);font:19px/1.75 "DejaVu Serif",Georgia,serif}
+main{max-width:760px;margin:auto;padding:0 30px 80px}
+a{color:var(--sea);text-underline-offset:.16em;overflow-wrap:anywhere}
+a:focus-visible{outline:3px solid #b95f28;outline-offset:4px}
+.skip{position:absolute;top:-90px;left:10px;background:white;padding:10px}
+.skip:focus{top:10px}
+.cover{min-height:80vh;display:flex;flex-direction:column;justify-content:center;border-bottom:2px solid var(--sea);padding:80px 0 55px}
+.eyebrow,.subtitle,nav,.label,.edition,.note-meta,.back,.bibliography{font-family:"DejaVu Sans",Arial,sans-serif}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sea)}
+h1{font-weight:400;font-size:clamp(44px,8vw,72px);line-height:1.12;letter-spacing:-.045em;margin:25px 0}
+.subtitle{font-size:20px;line-height:1.6;color:var(--muted);max-width:34ch}
+.edition{font-size:13px;margin-top:50px;color:var(--muted)}
+.rule{width:90px;border-top:4px solid var(--sea);margin-top:30px}
+nav{padding:35px 0 45px;border-bottom:1px solid #c3cfcb;font-size:15px}
+nav ol{padding-left:24px}nav li{padding:5px 0}
+h2{font-size:29px;line-height:1.35;font-weight:400;margin:65px 0 30px;letter-spacing:-.02em}
+p{margin:0 0 1.3em;orphans:3;widows:3}
+.interpretation{border-left:2px solid #c6d8d3;padding-left:18px}
+.label{font-size:.75em;color:var(--sea);font-weight:bold;letter-spacing:.02em}
+sup{font:11px "DejaVu Sans",sans-serif;vertical-align:super;line-height:0;margin-left:2px;white-space:nowrap}
+sup a{text-decoration:none;padding:1px}
+.notes{font-size:14px;line-height:1.65}.notes ol{padding-left:25px}.notes li{margin:0 0 24px;padding-left:5px}
+blockquote{margin:10px 0;border-left:2px solid #c6d8d3;padding-left:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.note-meta{font-size:12px;color:var(--muted)}.back{font-size:11px}.back a{margin-right:10px}
+.bibliography{font-size:13px;line-height:1.65}.bibliography article{margin:0 0 30px}.bibliography h3{font-size:16px}
+.bibliography p{margin-bottom:8px}.hash{font-family:monospace;font-size:11px;overflow-wrap:anywhere}
+footer{border-top:1px solid #c3cfcb;padding-top:20px;font-size:12px;color:var(--muted)}
+@page{size:A5;margin:18mm 16mm 20mm}
+@media print{
+ body{background:white;color:#17282c;font-size:10.5pt;line-height:1.62}
+ main{max-width:none;padding:0}.skip{display:none}
+ .cover{min-height:155mm;padding:20mm 0 10mm;border:0;break-after:page}
+ h1{font-size:38pt}.subtitle{font-size:13pt}.edition{font-size:9pt;margin-top:25mm}
+ nav{border:0;font-size:10pt;padding:0;break-after:page}nav h2{margin-top:0}
+ h2{font-size:20pt;margin:0 0 10mm;break-after:avoid}
+ .chapter{break-before:page}.chapter p{orphans:3;widows:3}
+ a{color:inherit;text-decoration:none}.notes{font-size:8.5pt;line-height:1.5}
+ .notes li{break-inside:avoid;margin-bottom:5mm}.notes h2,.bibliography h2{break-before:page}
+ .note-meta{font-size:7.5pt}.back,.screen-only{display:none}.bibliography{font-size:8pt}
+ .bibliography article{break-inside:avoid}.hash{font-size:7pt}
+ .interpretation{padding-left:3mm}.label{font-size:8pt}sup{font-size:7pt}
+ footer{font-size:8pt;break-inside:avoid}
+}

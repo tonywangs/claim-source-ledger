@@ -1,5 +1,18 @@
 # Claim Source Ledger
 
+
+## Read the short history
+
+**[A Line That Could Hold](book/editions/book.html)** tells the history of the
+Atlantic cable attempts through 1866, with seven chapters, exact source-linked
+citations, and a bibliography. Read the **[PDF edition](book/editions/book.pdf)**
+or explore the **[offline evidence report](book/editions/evidence.html)**.
+Real primary sources and facsimiles are retained in this repository; interpretations
+and gaps are labeled. [Book setup and build instructions](book/README.md) include
+one-command offline reconstruction and verification.
+
+The ledger software below supplies the book's citation-integrity checks.
+
 A local evidence notebook for researchers who need to answer: **Which exact
 source passage did I cite, and does that citation still match this revision?**
 

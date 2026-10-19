@@ -1,0 +1,2 @@
+# Retained source downloads are byte-pinned; never normalize their line endings.
+book/sources/raw/* -text

@@ -1,0 +1,48 @@
+{
+  "files": {
+    "book.html": {
+      "bytes": 98637,
+      "sha256": "bd9b15d01117e11e888b83a51d49dddc0e170d67cf92149509e441f2e8b9e2b2"
+    },
+    "book.pdf": {
+      "bytes": 380020,
+      "sha256": "66a54b1b48fe4db13cc2264098e1ac1085a1d48fde76e7fc3717797f5baa6b1a"
+    },
+    "evidence.html": {
+      "bytes": 678975,
+      "sha256": "754cbfe9a65c1225e20f2574b98a035d2f76f1efc8ea472ab01dde50fa8dc2c5"
+    },
+    "evidence.json": {
+      "bytes": 609609,
+      "sha256": "ad1e7e4f4be92ead97e108f64c61df7a2912993e2e9471b6b2c25e6786fc8fcd"
+    },
+    "reading.json": {
+      "bytes": 92277,
+      "sha256": "b4971b95279ea2a8fc98ba1d700705007aa6f1be82c277007ace27bfcb94bda7"
+    }
+  },
+  "format": "atlantic-cable-book",
+  "inputs": {
+    "book/evidence.json": "70001f0a0ff3816e3b383d8ebf664b23c883706770ebf96c828d99d27d51e0e3",
+    "book/manuscript.md": "c76bd2860fcd0a841c9e8bdf82e3c78816cf777af45186de5c1344e038093e3f",
+    "book/sources/banquet.txt": "9256c050faed3b57d75ec4a9f3b3d2e8643cec85b9d232ec425ffa4a19cb54bb",
+    "book/sources/catalog.json": "3b1b6a5950a285a6938455523006e0386363578cfb6a6f146331eade6f723c7e",
+    "book/sources/field-landing.txt": "a80baa5c5171c34fb9c8eb673ceccc99cc0f2fccd7491b3ee96f00c9db3b115a",
+    "book/sources/raw/banquet.pdf": "13c253bce06532a3c0e59e5c691fecddd7014b5023cbe185a60d698bf8fb18bd",
+    "book/sources/raw/banquet.txt": "6ecbee8b7803e9de5f8b677c0d4e1e7c1f4f60030a73bc74fefae201b1df6055",
+    "book/sources/raw/field-history-p361.pdf": "93bc08051ef760534e78c87b9afce804bcbba12fba90c24b149eb0147b0908f2",
+    "book/sources/raw/russell.html": "1e7ab6035e95469e9ca723f2f68612af4d67e1ff4c2b2953830f7779f611aefa",
+    "book/sources/raw/times-1866-08-01-p3.pdf": "ebad112f4ec54069144243dd9e05939f2e640dc11b9cf7407062dbfafbf1a58d",
+    "book/sources/russell.txt": "938091c4bc91a69128f3a53bf11a5e5e6ca527306b780a09fdbcc23258e0ec8f",
+    "book/sources/times.txt": "13488b5a95fb5f09f5dcc4955a3be6417e9e4c30abcc39351dc863968046c825",
+    "book/style.css": "426e1b4601a0b17b38ab41b1892f7d0fadef2598b275bc26de8d4703a8d8e0bc",
+    "claimledger/core.py": "e4691ac7a5cbf792cb9ef5b4151ad20b3cb0e8601e94640da7c7796a3de8b2bb",
+    "claimledger/report.py": "027768be162c9cf8e00b4cc4611dd83cc21e30a8f7ad4e3a03ed9c44fa5c365e",
+    "package-lock.json": "3e7ec3fbe531976eeba3da96fba356504e6b0e8c1c300f898690ab7ebfe7e105",
+    "scripts/book_pdf.cjs": "a463064aa969dcd72f5aed506b475e1a7e4d39c646cbab0fd4bb1bd3edbbdb86",
+    "scripts/book_sources.py": "3dcf2379027f85592ecc43b71e2771e8113261a991107f4045f980ca9b98dfd1",
+    "scripts/build_book.py": "1ae30ff84a147f6410f79004f4b50aa84c035f14192a22e6f85833eb217fd846"
+  },
+  "reproducibility": "Text outputs deterministic from pinned inputs. PDF metadata and font rendering can vary by environment; PDF byte identity is not promised.",
+  "version": 1
+}
